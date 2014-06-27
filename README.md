@@ -1,34 +1,23 @@
-gulp-automation
-===============
+gulpjob
+=======
 
 Front-end web development automation with node, gulp and compass.
 
+What does it do
+---------------
+Concatenates and minifies __JS__, compiles and compresses __SCSS__, handles __spriting__ with compass, and creates __sourcemaps__ for the above.
+
 Installation
---------------
+------------
 
-You need to have a node-enabled environment and be able to access the node packet management commands.
+You need [nodeJS](http://nodejs.org/download/) and [ruby compass](http://compass-style.org/install/). With npm added to your PATH environmental variables, run either of the following commands:
 
-- Run the install.bat windows batch file
-- With npm added to your PATH environmental variables, run the following commands:
+- ```npm install```
+- ```install.bat``` windows batch file
+- ```npm install gulp --global``` and ```npm install gulp gulp-uglifyjs gulp-compass gulp-concat-sourcemap gulp-autoprefixer gulp-minify-css gulp-notify gulp-rename gulp-clean --save-dev```
 
-```
-npm install gulp
-npm install gulp-uglifyjs
-npm install gulp-concat-sourcemap
-npm install gulp-autoprefixer
-npm install gulp-minify-css
-npm install gulp-compass
-npm install gulp-notify
-npm install gulp-rename
-npm install gulp-clean
-```
+If you would like to receive notifications from gulp-notify, you must install [snarl](http://fullphat.net/) or [growl](http://growl.info/)
 
-If you would like to receive notifications from gulp-notify, you must install snarl.
-
-TODO
-------
-
-* ~~Move dependencies to package.json~~
-* Watcher on change event not working
-* Modularize each task in external file
-* Add image-min support
+Usage
+-----
+Install and run ```gulp```.

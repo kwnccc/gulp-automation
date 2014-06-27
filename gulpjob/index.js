@@ -1,13 +1,7 @@
-<<<<<<< HEAD
 "use strict";
 
 var gulp       = global.gulp        = require('./config/includes').gulp;
 var gulpPlugin = global.gulpPlugin  = require('./config/includes').gulpPlugin;
-
-/*var gulpPlugin = require("gulp-load-plugins")({
- pattern: ['gulp-*', 'gulp.*'],
- replaceString: /\bgulp[\-.]/
- });*/
 
 // Files & Paths
 var basepath = global.basePaths   = require('./config/paths').basePaths;
@@ -32,16 +26,16 @@ var displayError = global.displayError = function (error) {
 };
 
 // Register tasks
-require('./tasks/js')();
-require('./tasks/jsminify')();
+require('./tasks/js').js();
+require('./tasks/js').js_concat();
+require('./tasks/js').js_minify();
 require('./tasks/scss')();
 require('./tasks/sprites').sprites();
+require('./tasks/sprites').create_sprites();
 require('./tasks/sprites').rename_sprites();
 require('./tasks/clean')();
+require('./tasks/build').build();
+require('./tasks/build').build_compass();
 
-require('./tasks/watch')();
-
-
-=======
-require('./gulpjob');
->>>>>>> upstream/master
+// watch = default
+require('./tasks/default')();
