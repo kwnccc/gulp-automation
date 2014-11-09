@@ -1,29 +1,25 @@
 
-/**
- * Full build
- */
+var gulpDefault = function(){
+	gulp.task('default', ['build']);
+}
 
+/**
+ * Full for development purposes
+ */
 var build = function () {
 
-	gulp.task('build', ['js', 'build_compass'], function(){
-	    return gulp.start('clean');
-	});
+	gulp.task('build', ['sprites', 'scss', 'js_concat']);
 
 };
 
 /**
- * Compass build
- *
- * SCSS needs to be run after spriting in order for the sprites scss to be added into the compilation
+ * Full build
  */
+var build_production = function(){
 
-var build_compass = function () {
-
-	gulp.task('build_compass', ['sprites'], function(){
-	    return gulp.start('scss');
-	});
-
+	gulp.task('build_production', ['build', 'css_minify', 'js_minify']);
 }
 
+module.exports.gulpDefault = gulpDefault;
 module.exports.build = build;
-module.exports.build_compass = build_compass;
+module.exports.build_production = build_production;

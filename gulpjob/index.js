@@ -1,16 +1,18 @@
 "use strict";
 
-var gulp       = global.gulp        = require('./config/includes').gulp;
-var gulpPlugin = global.gulpPlugin  = require('./config/includes').gulpPlugin;
+var Gulpjob = global.Gulpjob = Gulpjob || {};
+
+Gulpjob.gulp        = global.gulp = require('./config/includes').gulp;
+Gulpjob.gulpModules = global.gulpModules = require('./config/includes').gulpModules;
 
 // Files & Paths
-var basepath = global.basePaths   = require('./config/paths').basePaths;
-var files    = global.files       = require('./config/paths').files;
-var paths    = global.paths       = require('./config/paths').paths;
+Gulpjob.basePaths = require('./config/paths').basePaths;
+Gulpjob.files     = require('./config/paths').files;
+Gulpjob.paths     = require('./config/paths').paths;
 
 
 var changeEvent = global.changeEvent = function (evt) {
-    gulpPlugin.notify( '[watcher] File ' + evt.path + ' was ' + evt.type + ', compiling...');
+    gulpModules.notify( '[watcher] File ' + evt.path + ' was ' + evt.type + ', compiling...');
 };
 
 var displayError = global.displayError = function (error) {
@@ -22,20 +24,21 @@ var displayError = global.displayError = function (error) {
     if (error.lineNumber)
         errorString += ' on line ' + error.lineNumber + '.';
 
-    gulpPlugin.notify(errorString)
+    gulpModules.notify(errorString)
 };
 
 // Register tasks
 require('./tasks/js').js();
 require('./tasks/js').js_concat();
 require('./tasks/js').js_minify();
-require('./tasks/scss')();
+require('./tasks/scss').scss();
+require('./tasks/scss').css_minify();
 require('./tasks/sprites').sprites();
-require('./tasks/sprites').create_sprites();
-require('./tasks/sprites').rename_sprites();
-require('./tasks/clean')();
+require('./tasks/clean').clean_js();
+require('./tasks/clean').clean_css();
+require('./tasks/build').gulpDefault();
 require('./tasks/build').build();
-require('./tasks/build').build_compass();
+require('./tasks/build').build_production();
 
 // watch = default
-require('./tasks/default')();
+require('./tasks/watch')();

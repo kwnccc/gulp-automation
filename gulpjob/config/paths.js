@@ -1,36 +1,34 @@
 // Files & Paths
+
 var basePaths = {
-    main: './app/webroot/src/',
-    dist: './app/webroot/',
+    root : './app/',
+    dev  : './app/dev/',
+    dist : './app/dist/',
 };
 
 var files = {
 
-    clean: basePaths.dist + 'css/generate_sprites.css',
+    scss         : basePaths.dev + 'scss/**/*.scss',
+    css          : basePaths.dist + 'css/**/*.css',
+    css_minified : basePaths.dist + 'css/**/*.min.css',
+    
+    js           : basePaths.dev + 'js/**/*.js',
+    js_compiled  : basePaths.dist + 'js/scripts.js',
+    js_minified  : basePaths.dist + 'js/**/*.min.*',
 
-    src: {
-        compiled_js: basePaths.dist + '/js/scripts.js',
-        js: basePaths.main + 'js/**/*.js',
-        scss: basePaths.main + 'sass/main.scss',
-        sprites: basePaths.main + 'sass/generate_sprites.scss',
-        sprites_compiled: basePaths.dist + 'css/generate_sprites.css',
-    },
+    sprites_img  : basePaths.dev + 'img/**/*.png'
 
 };
 
 var paths = {
 
-    src: {
-        scss: basePaths.main + 'sass/',
-        sprites: basePaths.dist + '/img',
-        sourcemaps_root: '/'
-    },
+    scss  : basePaths.dev + 'scss',
+    css   : basePaths.dist + 'css',
 
-    dist: {
-        js: basePaths.dist + 'js',
-        css: basePaths.dist + 'css',
-        sprites_scss: basePaths.main + 'sass',
-    },
+    js_compiled : basePaths.dist + 'js',
+
+    sprites_img : basePaths.dev + 'img',
+    sourcemaps_root: '/'
 
 };
 
